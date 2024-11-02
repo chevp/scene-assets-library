@@ -1,0 +1,57 @@
+uuid: 6cf7ae02-05fe-4d87-b88b-e40fdfe16af4
+name: "scene_1"
+comps:
+  - {
+      type: pointLight,
+      name: PerspectiveCamera,
+      color: "#ffffff",
+      intensity: 1,
+      distance: 100,
+      decay: 2,
+      pos: [0, 0, 0]
+    }
+  - {
+      type: camera,
+      name: PerspectiveCamera,
+      fov: 75,
+      aspect: 1.33,
+      near: 0.1,
+      far: 1000,
+      pos: [0, 0, 0]
+    }
+  - {
+      type: shader,
+      name: CustomShader,
+      vertex_shader: vertex-shader-code,
+      fragment_shader: fragment-shader-code,
+      uniforms: { time: 1.0, resolution: [1.0, 1.0] }
+    }
+  - {
+      type: object,
+      name: Mesh,
+      geometry: BoxGeometry,
+      material: MeshPhongMaterial,
+      pos: [0, 0, 0],
+      width: 2,
+      height: 3,
+      depth: 1
+    }
+  - {
+      type: object,
+      name: Mesh,
+      geometry: SphereGeometry,
+      material: MeshPhongMaterial,
+      pos: [0, 0, 0],
+      radius: 4
+    }
+  - {
+      type: physics,
+      name: Cannon,
+      mass: 1,
+      friction: 0.3
+    }
+  - {
+      type: utility,
+      name: AxesHelper,
+      size: 5
+    }
