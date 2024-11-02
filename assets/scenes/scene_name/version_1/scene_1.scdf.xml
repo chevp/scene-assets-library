@@ -1,0 +1,68 @@
+<scoe>
+    <scene>
+        <root>RootNode</root>
+        <activeCamera>MainCamera</activeCamera>
+    </scene>
+
+    <nodes>
+        <node name="RootNode">
+            <children>
+                <child>CubeNode</child>
+                <child>TreeNode</child>
+                <child>LightNode</child>
+            </children>
+            <position x="0" y="0" z="0" />
+            <rotation x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+        </node>
+
+        <node name="CubeNode" mesh="CubeModel" material="BasicMaterial">
+            <position x="1" y="0" z="0" />
+            <rotation x="0" y="45" z="0" />
+            <scale x="1" y="1" z="1" />
+        </node>
+
+        <node name="TreeNode" mesh="TreeModel" material="LeafyMaterial">
+            <position x="-2" y="0" z="3" />
+            <rotation x="0" y="15" z="0" />
+            <scale x="1.5" y="1.5" z="1.5" />
+        </node>
+
+        <node name="LightNode" light="SceneLight">
+            <position x="5" y="10" z="5" />
+            <rotation x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+        </node>
+    </nodes>
+
+    <materials>
+        <material name="BasicMaterial" type="Phong">
+            <color r="1" g="0.5" b="0.5" />
+            <texture>CubeTexture</texture>
+        </material>
+        <material name="LeafyMaterial" type="Lambert">
+            <color r="0.2" g="0.8" b="0.3" />
+            <texture>LeafTexture</texture>
+        </material>
+    </materials>
+
+    <cameras>
+        <camera name="MainCamera" fov="45">
+            <position x="0" y="5" z="10" />
+            <rotation x="0" y="-30" z="0" />
+        </camera>
+    </cameras>
+
+    <lights>
+        <light name="SceneLight" type="point" intensity="1.0">
+            <color r="1" g="1" b="1" />
+        </light>
+    </lights>
+
+    <metadata>
+        <author>chevp</author>
+        <version>1.0</version>
+        <description>Scene file using asset names from asset_manifest.json</description>
+    </metadata>
+</scoe>
+  

@@ -1,0 +1,40 @@
+<scoe>
+    <scene>
+      <root>RootNode</root>
+      <activeCamera>MainCamera</activeCamera>
+    </scene>
+  
+    <nodes>
+      <node name="RootNode" position="[0, 0, 0]" rotation="[0, 0, 0]" scale="[1, 1, 1]">
+        <children>
+          <child>CubeNode</child>
+          <child>TreeNode</child>
+          <child>LightNode</child>
+        </children>
+      </node>
+  
+      <node name="CubeNode" mesh="CubeModel" material="BasicMaterial" position="[1, 0, 0]" rotation="[0, 45, 0]" scale="[1, 1, 1]"/>
+      <node name="TreeNode" mesh="TreeModel" material="LeafyMaterial" position="[-2, 0, 3]" rotation="[0, 15, 0]" scale="[1.5, 1.5, 1.5]"/>
+      <node name="LightNode" light="SceneLight" position="[5, 10, 5]" rotation="[0, 0, 0]" scale="[1, 1, 1]"/>
+    </nodes>
+  
+    <cameras>
+      <camera name="MainCamera" fov="45" nearPlane="0.1" farPlane="1000">
+        <position>[0, 5, 10]</position>
+        <rotation>[0, -30, 0]</rotation>
+      </camera>
+    </cameras>
+  
+    <lights>
+      <light name="SceneLight" type="point" intensity="1.0">
+        <color>[1, 1, 1]</color>
+      </light>
+    </lights>
+  
+    <metadata>
+      <author>chevp</author>
+      <version>1.0</version>
+      <description>Scene file using asset names from asset_manifest.json</description>
+    </metadata>
+  </scoe>
+  

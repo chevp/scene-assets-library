@@ -1,37 +1,139 @@
 {
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Welcome3",
-    "definitions": {
-        "Welcome3": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "version": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "author": {
-                    "type": "string"
-                },
-                "uuid": {
-                    "type": "string",
-                    "format": "uuid",
-                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
-                }
-            },
-            "required": [
-                "author",
-                "description",
-                "name",
-                "version",
-                "uuid"
-            ],
-            "title": "Welcome3"
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Scene File Schema (SCDF)",
+    "type": "object",
+    "required": ["scene", "nodes", "materials", "cameras", "lights", "metadata"],
+    "properties": {
+      "scene": {
+        "type": "object",
+        "required": ["root", "activeCamera"],
+        "properties": {
+          "root": { "type": "string" },
+          "activeCamera": { "type": "string" }
         }
-    }
-}
+      },
+      "nodes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["name"],
+          "properties": {
+            "name": { "type": "string" },
+            "children": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "mesh": { "type": "string" },
+            "material": { "type": "string" },
+            "light": { "type": "string" },
+            "position": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "rotation": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "scale": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          }
+        }
+      },
+      "linkedScenes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["name", "path", "loadTrigger", "entryPoint"],
+          "properties": {
+            "name": { "type": "string" },
+            "path": { "type": "string" },
+            "loadTrigger": { "type": "string", "enum": ["onEvent", "onProximity"] },
+            "entryPoint": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          }
+        }
+      },
+      "materials": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["name", "type", "color"],
+          "properties": {
+            "name": { "type": "string" },
+            "type": { "type": "string", "enum": ["Phong", "Lambert"] },
+            "color": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "texture": { "type": "string" }
+          }
+        }
+      },
+      "cameras": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["name", "position", "rotation", "fov"],
+          "properties": {
+            "name": { "type": "string" },
+            "position": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "rotation": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "fov": { "type": "number" }
+          }
+        }
+      },
+      "lights": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["name", "type", "intensity", "color"],
+          "properties": {
+            "name": { "type": "string" },
+            "type": { "type": "string", "enum": ["point", "directional", "spot"] },
+            "intensity": { "type": "number" },
+            "color": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          }
+        }
+      },
+      "metadata": {
+        "type": "object",
+        "required": ["author", "version", "description"],
+        "properties": {
+          "author": { "type": "string" },
+          "version": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "additionalProperties": false
+  }
+  

@@ -1,0 +1,8 @@
+{
+    "json.schemas": [
+      {
+        "fileMatch": ["*.scdf.json"],
+        "url": "./specifications/schemas/scdf.schema.json"
+      }
+    ]
+  }

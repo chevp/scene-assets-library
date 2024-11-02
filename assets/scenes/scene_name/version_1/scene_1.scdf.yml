@@ -1,0 +1,61 @@
+scene:
+  root: RootNode
+  activeCamera: MainCamera
+
+nodes:
+  - name: RootNode
+    children: 
+      - CubeNode
+      - TreeNode
+      - LightNode
+    position: [0, 0, 0]
+    rotation: [0, 0, 0]
+    scale: [1, 1, 1]
+
+  - name: CubeNode
+    mesh: CubeModel
+    material: BasicMaterial
+    position: [1, 0, 0]
+    rotation: [0, 45, 0]
+    scale: [1, 1, 1]
+
+  - name: TreeNode
+    mesh: TreeModel
+    material: LeafyMaterial
+    position: [-2, 0, 3]
+    rotation: [0, 15, 0]
+    scale: [1.5, 1.5, 1.5]
+
+  - name: LightNode
+    light: SceneLight
+    position: [5, 10, 5]
+    rotation: [0, 0, 0]
+    scale: [1, 1, 1]
+
+materials:
+  - name: BasicMaterial
+    type: Phong
+    color: [1, 0.5, 0.5]
+    texture: CubeTexture
+
+  - name: LeafyMaterial
+    type: Lambert
+    color: [0.2, 0.8, 0.3]
+    texture: LeafTexture
+
+cameras:
+  - name: MainCamera
+    position: [0, 5, 10]
+    rotation: [0, -30, 0]
+    fov: 45
+
+lights:
+  - name: SceneLight
+    type: point
+    intensity: 1.0
+    color: [1, 1, 1]
+
+metadata:
+  author: chevp
+  version: "1.0"
+  description: "Scene file using asset names from asset_manifest.json"
