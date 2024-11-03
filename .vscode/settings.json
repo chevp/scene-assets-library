@@ -2,7 +2,10 @@
     "json.schemas": [
       {
         "fileMatch": ["*.scdf.json"],
-        "url": "./specifications/schemas/scdf.schema.json"
+        "url": "./specifications/schemas/scdf.json.schema.json"
       }
-    ]
+    ],
+    "yaml.schemas": {
+      "./specifications/schemas/scdf.yml.schema.json": ["*.scdf.yml", "*.scdf.yaml"]
+    }
   }

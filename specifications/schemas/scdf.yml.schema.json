@@ -1,0 +1,123 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "scene": {
+        "type": "object",
+        "properties": {
+          "root": { "type": "string" },
+          "activeCamera": { "type": "string" }
+        },
+        "required": ["root", "activeCamera"]
+      },
+      "nodes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "mesh": { "type": "string" },
+            "material": { "type": "string" },
+            "light": { "type": "string" },
+            "type": { "type": "string" },
+            "geometry": { "type": "string" },
+            "position": { 
+              "type": "array", 
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "rotation": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "scale": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "children": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "width": { "type": "number" },
+            "height": { "type": "number" },
+            "depth": { "type": "number" }
+          },
+          "required": ["name", "position"]
+        }
+      },
+      "materials": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "type": { "type": "string" },
+            "color": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "texture": { "type": "string" }
+          },
+          "required": ["name", "type", "color"]
+        }
+      },
+      "cameras": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "position": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "rotation": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "fov": { "type": "number" }
+          },
+          "required": ["name", "position", "rotation", "fov"]
+        }
+      },
+      "lights": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "type": { "type": "string" },
+            "intensity": { "type": "number" },
+            "color": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "required": ["name", "type", "intensity", "color"]
+        }
+      },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "author": { "type": "string" },
+          "version": { "type": "string" },
+          "description": { "type": "string" }
+        },
+        "required": ["author", "version", "description"]
+      }
+    },
+    "required": ["scene", "nodes", "materials", "cameras", "lights", "metadata"]
+  }
